@@ -26,7 +26,6 @@
               </v-card-text>
               <v-card-actions>
                 <v-btn color="primary" fab x-small dark @click="editCourse(item)">
-              <v-icon>mdi-pencil</v-icon>
             </v-btn>
               </v-card-actions>
             </v-card>
