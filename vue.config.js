@@ -3,3 +3,5 @@ module.exports = {
     "vuetify"
   ]
 }
+
+pluginOptions.apollo.lintGQL = true;
