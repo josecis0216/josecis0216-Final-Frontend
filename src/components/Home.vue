@@ -1,7 +1,6 @@
 <template>
   <!-- Apollo watched Graphql query -->
-  <ApolloQuery :query="require('../graphql/AllCourses.gql')"
-   :variables="{ searchString }">
+  <ApolloQuery :query="require('../graphql/AllPlayers.gql')">
     <template v-slot="{ result: { loading, error, data } }">
       <!-- Loading -->
       <div v-if="loading" class="loading apollo">Loading...</div>
@@ -12,16 +11,17 @@
       <!-- Result -->
       <div v-else-if="data" class="result apollo">
         <v-row>
-          <v-col cols="4" v-for="(item, i) in data.courses" :key="i">
+          <v-col cols="4" v-for="(item, i) in data.players" :key="i">
             <v-card class="mx-auto" max-width="350">
               <v-card-text>
-                <div>{{ item.courseCode }}</div>
+                <div>{{ item.name }}</div>
                 <p class="courseName">
-                  {{ item.name }}
+                  {{ item.jerseyNumber }}
                 </p>
-                <p>{{ item.termsOffered }}</p>
+                <p>{{ item.position }}</p>
                 <div class="text--primary">
-                  {{ item.description | truncate(200) }}
+                  {{ item.nationality | truncate(200) }}
+                  {{ item.dob }}
                 </div>
               </v-card-text>
               <v-card-actions>
@@ -43,14 +43,14 @@
 //import vue-truncate-filter from 'vue-truncate-filter'
 
 export default {
-  name: 'Home',
+  name: 'players',
 
   data: () => ({
     searchString: "DGM"
   }),
   methods: {
-    editCourse(course) {
-      this.$store.dispatch('editCourse', course)
+    editPlayer(player) {
+      this.$store.dispatch('editPlayer', player)
       this.$router.push('admin')
     }
   }

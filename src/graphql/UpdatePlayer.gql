@@ -1,0 +1,16 @@
+mutation UpdatePlayer ($id: String!, $name: String!, $position: String, $dob: String, $nationality: String!, $jerseyNumber: String) {
+  updateOneCourse (where:
+    { id: $id},
+    data: { 
+    name: $name,
+    position: $position,
+    dob: $dob,
+    nationality: $nationality,
+    jerseyNumber: {
+      set: $jerseyNumber
+    }
+    }
+  ) {
+      id
+  }
+}

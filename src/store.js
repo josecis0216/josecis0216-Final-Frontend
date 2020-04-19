@@ -5,21 +5,21 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    editableCourse: null,
+    editablePlayer: null,
   },
   getters: {
-    currentEditableCourse: (state) => {
-      return state.editableCourse
-    },
+    currentEditablePlayer: (state) => {
+      return state.editablePlayer
+    }
   },
   mutations: {
-    editCourse(state, editableCourse) {
-      state.editableCourse = editableCourse
+    editPlayer(state, editablePlayer) {
+      state.editablePlayer = editablePlayer
     },
   },
   actions: {
-    editCourse(context, course) {
-      context.commit('editCourse', course)
+    editCourse(context, player) {
+      context.commit('editPlayer', player)
     },
   },
 })

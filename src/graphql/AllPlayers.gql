@@ -1,0 +1,10 @@
+query AllPlayers {
+  players  {
+    id
+    name
+    position
+    dob
+    nationality
+    jerseyNumber
+  }
+}
