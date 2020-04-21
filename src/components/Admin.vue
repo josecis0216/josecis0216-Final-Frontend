@@ -7,6 +7,7 @@
       position,
       dob,
       nationality,
+      currentTeam,
       jerseyNumber,
       }"
       @done="onDone"
@@ -35,6 +36,9 @@
           <v-col cols="12" md="2">
           <v-text-field v-model="jerseyNumber" filled label="Club Jersey Number"></v-text-field>
           </v-col>
+          <v-col cols="12" md="2">
+          <v-text-field v-model="currentTeam" filled label="Current Club"></v-text-field>
+          </v-col>
           <!-- <v-col cols="12" md="5">
           <v-select :items="jerseyNumber" v-model="termsOffered" filled multiple label="Player Club Jersey Number"></v-select>
           </v-col> -->
@@ -57,6 +61,7 @@ export default {
       position: this.$store.getters.currentEditablePlayer.position,
       dob: this.$store.getters.currentEditablePlayer.dob,
       nationality: this.$store.getters.currentEditablePlayer.nationality,
+      currentTeam: this.$store.getters.currentEditablePlayer.currentTeam,
       jerseyNumber: this.$store.getters.currentEditablePlayer.jerseyNumber
     }
   },

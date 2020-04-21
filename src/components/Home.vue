@@ -22,6 +22,7 @@
                 <div class="text--primary">
                   {{ item.nationality | truncate(200) }}
                   {{ item.dob }}
+                  {{ item.currentTeam }}
                 </div>
               </v-card-text>
               <v-card-actions>

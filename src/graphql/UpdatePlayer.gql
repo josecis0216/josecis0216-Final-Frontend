@@ -1,4 +1,4 @@
-mutation UpdatePlayer ($id: String!, $name: String!, $position: String, $dob: String, $nationality: String!, $jerseyNumber: String) {
+mutation UpdatePlayer ($id: String!, $name: String!, $position: String, $dob: String, $nationality: String!, $currentTeam: String!, $jerseyNumber: String) {
   updateOneCourse (where:
     { id: $id},
     data: { 
@@ -6,6 +6,7 @@ mutation UpdatePlayer ($id: String!, $name: String!, $position: String, $dob: St
     position: $position,
     dob: $dob,
     nationality: $nationality,
+    currentTeam: $currentTeam,
     jerseyNumber: {
       set: $jerseyNumber
     }

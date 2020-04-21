@@ -1489,7 +1489,7 @@
     lodash.mapvalues "^4.6.0"
     lodash.transform "^4.6.0"
     mini-css-extract-plugin "^0.9.0"
-    minimist "^1.2.3"
+    minimist "^1.2.0"
     pnp-webpack-plugin "^1.6.0"
     portfinder "^1.0.25"
     postcss-loader "^3.0.0"
@@ -6877,6 +6877,11 @@ minimist@^1.2.0:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
   integrity sha1-o1AIsg9BOD7sH7kU9M1d95omQoQ=
 
+minimist@^1.2.3:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
+  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
+
 minipass-collect@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/minipass-collect/-/minipass-collect-1.0.2.tgz#22b813bf745dc6edba2576b940022ad6edc8c617"
@@ -10066,7 +10071,7 @@ vue-apollo@^3.0.0-beta.11:
     serialize-javascript "^2.1.0"
     throttle-debounce "^2.1.0"
 
-vue-cli-plugin-apollo@^0.21.3:
+vue-cli-plugin-apollo@~0.21.3:
   version "0.21.3"
   resolved "https://registry.yarnpkg.com/vue-cli-plugin-apollo/-/vue-cli-plugin-apollo-0.21.3.tgz#520d336db0e88b26fe854833a555e2e29fe26571"
   integrity sha512-8CzRVrAsFkB9lpl600cRCNR9OUnrSYYAIVF9/qW4pP0TMXbhrd1F1wEAAN6E0CPimjTLB+qSt6zWS4vb2wC8Wg==

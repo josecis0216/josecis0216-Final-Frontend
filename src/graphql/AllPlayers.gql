@@ -5,6 +5,7 @@ query AllPlayers {
     position
     dob
     nationality
+    currentTeam
     jerseyNumber
   }
 }
