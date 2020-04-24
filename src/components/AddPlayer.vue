@@ -1,8 +1,7 @@
 <template>
   <ApolloMutation
-    :mutation="require('../graphql/UpdatePlayer.gql')"
+    :mutation="require('../graphql/AddPlayer.gql')"
     :variables="{
-      id,
       name,
       position,
       dob,
@@ -44,7 +43,7 @@
             </v-col>-->
           </v-row>
           <v-btn large color="secondary" :disabled="loading" @click="returnHome">Cancel</v-btn>
-          <v-btn large color="primary" :disabled="loading" @click="mutate()">Save</v-btn>
+          <v-btn large color="primary" :disabled="loading" @click="mutate()">Add Player</v-btn>
           <p v-if="error">An error occurred: {{ error }}</p>
         </v-container>
       </v-form>
@@ -53,28 +52,51 @@
 </template>
 
 <script>
-export default {
-  data: function() {
-    return {
-      id: this.$store.getters.currentEditablePlayer.id,
-      name: this.$store.getters.currentEditablePlayer.name,
-      position: this.$store.getters.currentEditablePlayer.position,
-      dob: this.$store.getters.currentEditablePlayer.dob,
-      nationality: this.$store.getters.currentEditablePlayer.nationality,
-      currentTeam: this.$store.getters.currentEditablePlayer.currentTeam,
-      jerseyNumber: this.$store.getters.currentEditablePlayer.jerseyNumber
-    };
-  },
-  methods: {
-    onDone() {
-      return console.log("Done");
-    },
-    returnHome() {
-      console.log("Going home");
-      this.$router.push("/");
+    export default {
+        data: function(){
+            return {
+                name: '',
+                position: '',
+                dob: '',
+                nationality: '',
+                currentTeam: '',
+                jerseyNumber: ''
+            }
+        },
+        methods: {
+            onDone() {
+                return console.log('Done')
+            },
+            returnHome() {
+                console.log('Going Home')
+                this.$router.push('/');
+            }
+        }
     }
-  }
-};
-// id,
 </script>
+//<script>
+// export default {
+//   data: function() {
+//     return {
+//       id: this.$store.getters.currentEditablePlayer.id,
+//       name: this.$store.getters.currentEditablePlayer.name,
+//       position: this.$store.getters.currentEditablePlayer.position,
+//       dob: this.$store.getters.currentEditablePlayer.dob,
+//       nationality: this.$store.getters.currentEditablePlayer.nationality,
+//       currentTeam: this.$store.getters.currentEditablePlayer.currentTeam,
+//       jerseyNumber: this.$store.getters.currentEditablePlayer.jerseyNumber
+//     };
+//   },
+//   methods: {
+//     onDone() {
+//       return console.log("Done");
+//     },
+//     returnHome() {
+//       console.log("Going home");
+//       this.$router.push("/");
+//     }
+//   }
+// };
+// // id,
+// </script>
 

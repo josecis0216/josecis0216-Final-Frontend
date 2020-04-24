@@ -47,7 +47,7 @@ export default {
   name: 'players',
 
   data: () => ({
-    searchString: "DGM"
+    searchString: "Roma"
   }),
   methods: {
     editPlayer(player) {

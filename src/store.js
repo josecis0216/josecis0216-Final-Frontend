@@ -18,7 +18,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    editCourse(context, player) {
+    editPlayer(context, player) {
       context.commit('editPlayer', player)
     },
   },

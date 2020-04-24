@@ -9,7 +9,8 @@
         <router-link class="routerLink" to="/">Home</router-link><span class="routerLink"> | </span>
         <!-- <router-link class="routerLink" to="/teams">Teams</router-link><span class="routerLink"> | </span>
         <router-link class="routerLink" to="/player">Player</router-link><span class="routerLink"> | </span> -->
-        <router-link class="routerLink" to="/admin">Admin</router-link>
+        <router-link class="routerLink" to="/admin">Admin</router-link><span class="routerLink"> | </span> 
+        <router-link class="routerLink" to="/add-player">Add-Player</router-link>
       </div>
     <v-spacer></v-spacer>
     </v-app-bar>
@@ -26,7 +27,7 @@
 <script>
 //import ApolloExample from './components/ApolloExample';
 //import CourseCard from './components/CourseCard'
-//import Admin from './components/Admin'
+// import Admin from './components/Admin'
 
 export default {
   name: 'App',
@@ -34,7 +35,7 @@ export default {
   components: {
     //ApolloExample,
     //CourseCard,
-    //Admin
+    // Admin
   },
 
   data: () => ({

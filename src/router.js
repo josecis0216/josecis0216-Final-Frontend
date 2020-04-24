@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 import Home from '../views/Home.vue'
 import Admin from '../views/Admin.vue'
-import Player from '../views/Player.vue'
+import AddPlayer from '../views/AddPlayer.vue'
 import Teams from '../views/Teams.vue'
 
 Vue.use(VueRouter)
@@ -21,9 +21,9 @@ export default new VueRouter({
             component: Admin
         },
         {
-            path:'/players',
-            name: "players",
-            component: Player
+            path:'/add-player',
+            name: "add-player",
+            component: AddPlayer
         },
         {
             path:'/teams',
