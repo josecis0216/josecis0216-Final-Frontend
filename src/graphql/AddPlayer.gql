@@ -1,0 +1,12 @@
+mutation AddPlayer ($name: String!, $position: String, $dob: String, $nationality: String!, $currentTeam: String, $jerseyNumber: String) {
+  createPlayer (
+    name: $name,
+    position: $position,
+    dob: $dob,
+    nationality: $nationality,
+    currentTeam: $currentTeam,
+    jerseyNumber: $jerseyNumber
+  ) {
+      id
+  }
+}

@@ -11,7 +11,7 @@
       <!-- Result -->
       <div v-else-if="data" class="result apollo">
         <v-row>
-          <v-col cols="4" v-for="(item, i) in data.players" :key="i">
+          <v-col cols="4" v-for="(item, i) in data.Players" :key="i">
             <v-card class="mx-auto" max-width="350">
               <v-card-text>
                 <div>{{ item.name }}</div>
@@ -20,13 +20,13 @@
                 </p>
                 <p>{{ item.position }}</p>
                 <div class="text--primary">
-                  {{ item.nationality | truncate(200) }}
-                  {{ item.dob }}
+                  {{ item.nationality | truncate(200) }} <br>
+                  {{ item.dob }} <br>
                   {{ item.currentTeam }}
                 </div>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="primary" fab x-small dark @click="editCourse(item)">
+                <v-btn color="primary" fab x-small dark @click="editPlayer(item)">
             </v-btn>
               </v-card-actions>
             </v-card>

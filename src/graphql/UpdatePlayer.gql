@@ -1,5 +1,5 @@
 mutation UpdatePlayer ($id: String!, $name: String!, $position: String, $dob: String, $nationality: String!, $currentTeam: String!, $jerseyNumber: String) {
-  updateOneCourse (where:
+  updatePlayer (where:
     { id: $id},
     data: { 
     name: $name,
