@@ -16,6 +16,10 @@ export default new Vuex.Store({
     editPlayer(state, editablePlayer) {
       state.editablePlayer = editablePlayer
     },
+    deletePlayer(state, player) {
+      var index = state.Players.findIndex(p => p.id == player.id);
+      state.Players.splice(index, 1);
+    }
   },
   actions: {
     editPlayer(context, player) {

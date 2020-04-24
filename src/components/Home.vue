@@ -15,19 +15,19 @@
             <v-card class="mx-auto" max-width="350">
               <v-card-text>
                 <div>{{ item.name }}</div>
-                <p class="courseName">
-                  {{ item.jerseyNumber }}
-                </p>
+                <p class="courseName">{{ item.jerseyNumber }}</p>
                 <p>{{ item.position }}</p>
                 <div class="text--primary">
-                  {{ item.nationality | truncate(200) }} <br>
-                  {{ item.dob }} <br>
+                  {{ item.nationality | truncate(200) }}
+                  <br />
+                  {{ item.dob }}
+                  <br />
                   {{ item.currentTeam }}
                 </div>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="primary" fab x-small dark @click="editPlayer(item)">
-            </v-btn>
+                <v-btn color="primary" fab x-small dark @click="editPlayer(item)">Edit</v-btn>
+                <v-btn color="danger" fab x-small dark @click="deletePlayer(item)">Delete</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -42,20 +42,38 @@
 
 <script>
 //import vue-truncate-filter from 'vue-truncate-filter'
+import gql from 'graphql-tag'
+
+const deletePlayer = gql`
+   mutation deleteOnePlayer($id: String!) {
+     deleteOnePlayer(where: { id: $id }) {
+       id
+     }
+   }
+ `;
 
 export default {
-  name: 'players',
+  name: "players",
 
   data: () => ({
     searchString: "Roma"
   }),
   methods: {
     editPlayer(player) {
-      this.$store.dispatch('editPlayer', player)
-      this.$router.push('admin')
+      this.$store.dispatch("editPlayer", player);
+      this.$router.push("admin");
+    },
+    deletePlayer: function(player) {
+    // delete player from db
+    this.$apollo.mutate({
+      mutation: deletePlayer,
+      variables: {
+        id: player.id,
+        }
+      });
     }
   }
-}
+};
 </script>
 
 <style scoped>

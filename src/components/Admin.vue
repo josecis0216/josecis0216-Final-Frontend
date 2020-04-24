@@ -39,9 +39,6 @@
             <v-col cols="12" md="2">
               <v-text-field v-model="currentTeam" filled label="Current Club"></v-text-field>
             </v-col>
-            <!-- <v-col cols="12" md="5">
-          <v-select :items="jerseyNumber" v-model="termsOffered" filled multiple label="Player Club Jersey Number"></v-select>
-            </v-col>-->
           </v-row>
           <v-btn large color="secondary" :disabled="loading" @click="returnHome">Cancel</v-btn>
           <v-btn large color="primary" :disabled="loading" @click="mutate()">Save</v-btn>

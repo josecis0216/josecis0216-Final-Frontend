@@ -1,0 +1,7 @@
+mutation DeletePlayer ($id: String!) {
+  deleteOnePlayer (where:
+    { id: $id},
+  ) {
+      id
+  }
+}
