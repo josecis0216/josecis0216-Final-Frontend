@@ -26,8 +26,8 @@
                 </div>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="primary" fab x-small dark @click="editPlayer(item)">Edit</v-btn>
-                <v-btn color="danger" fab x-small dark @click="deletePlayer(item)">Delete</v-btn>
+                <v-btn color="cyan" fab small dark @click="editTeam(item)"><v-icon dark>{{ icons.mdiPencil }}</v-icon></v-btn>
+                <v-btn color="error"  fab small dark @click="deleteTeam(item)"><v-icon dark>{{ icons.mdiDelete }}</v-icon></v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -43,6 +43,12 @@
 <script>
 //import vue-truncate-filter from 'vue-truncate-filter'
 import gql from 'graphql-tag'
+import {
+    mdiAccount,
+    mdiPencil,
+    mdiShareVariant,
+    mdiDelete,
+  } from '@mdi/js'
 
 const deletePlayer = gql`
    mutation deleteOnePlayer($id: String!) {
@@ -56,6 +62,12 @@ export default {
   name: "players",
 
   data: () => ({
+    icons: {
+    mdiAccount,
+    mdiPencil,
+    mdiShareVariant,
+    mdiDelete,
+    },
     searchString: "Roma"
   }),
   methods: {

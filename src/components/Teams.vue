@@ -14,15 +14,21 @@
             <div>{{ item.trophies }}</div>
           </v-card-text>
           <v-card-actions>
-            <v-btn color="primary" fab x-small dark @click="editTeam(item)">Edit</v-btn>
-            <v-btn color="danger" fab x-small dark @click="deleteTeam(item)">Delete</v-btn>
+            <v-btn color="cyan" fab small dark @click="editTeam(item._id)"><v-icon dark>{{ icons.mdiPencil }}</v-icon></v-btn>
+            <v-btn color="error"  fab small dark @click="deleteTeam(item, item._id)"><v-icon dark>{{ icons.mdiDelete }}</v-icon></v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
       <v-col cols="12">
-        <v-btn @click="getFavTeam()">Get Favorite Team</v-btn>
-        <div>{{ team.name }}</div>
-        <div>{{ team.trophies }}</div>
+          <v-btn @click="getFavTeam()">Get Favorite Team</v-btn>
+      </v-col>
+      <v-col cols="12" v-model="team">
+        <v-card max-width="350">
+          <v-card-text>
+            <div>{{ team.name }}</div>
+            <div>{{ team.trophies }}</div>
+          </v-card-text>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
@@ -30,9 +36,21 @@
 
 <script>
 import axios from "axios";
+import {
+    mdiAccount,
+    mdiPencil,
+    mdiShareVariant,
+    mdiDelete,
+  } from '@mdi/js'
 
 export default {
   data: () => ({
+    icons: {
+    mdiAccount,
+    mdiPencil,
+    mdiShareVariant,
+    mdiDelete,
+    },
     teams: [],
     team: ""
   }),
@@ -54,6 +72,17 @@ export default {
           console.log(response);
           this.team = response.data.team;
           console.log(this.team);
+        })
+        .catch(error => console.log(error));
+    },
+    editTeam(team) {
+        return console.log(team)
+    },
+    deleteTeam(teams, id) {
+        axios.delete('http://localhost:8000/player/' + id)
+        .then(response => {
+            this.teams.splice(teams, 1)
+            console.log(response)
         })
         .catch(error => console.log(error));
     }
