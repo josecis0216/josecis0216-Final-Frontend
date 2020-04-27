@@ -11,7 +11,7 @@
             <v-text-field v-model="image" label="Image URL" required filled>{{ image }}</v-text-field>   
         </v-card-text>
         <v-card-actions>
-            <v-btn large color="black white--text"  @click="updateCard">Update Team</v-btn>
+            <v-btn large color="black white--text"  @click="updateTeam">Update Team</v-btn>
         </v-card-actions>
       </v-container>
     </v-form>
@@ -35,7 +35,7 @@ export default {
   },
   
   methods: {
-       updateCard(){
+       updateTeam(){
       const url = (`http://localhost:8000/player/team/` + this.id)
       const data = {
         name: this.name,
