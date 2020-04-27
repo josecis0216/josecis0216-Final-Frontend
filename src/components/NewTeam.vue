@@ -15,6 +15,13 @@
           <v-btn large color="green white--text" @click="newTeam">Create Team</v-btn>
                 <v-btn large color="red white--text"  @click="returnHome">Cancel </v-btn>
         </v-card-actions>
+        <v-alert
+          v-if="alert"
+          v-model="alert"
+          dismissible
+          type="success">
+            Successfully created Team
+          </v-alert>
       </v-container>
     </v-form>
     </v-card>
@@ -32,6 +39,7 @@ export default {
       name: '',
       trophies: '',
       image: '',
+      alert: false,
     }
   },
   
@@ -55,6 +63,7 @@ export default {
       return axios(options)
       .then(response => {
         console.log(response.data)
+        this.alert = true
       })
       .catch(error => console.log(error)) 
       },

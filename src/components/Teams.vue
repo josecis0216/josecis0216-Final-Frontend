@@ -5,7 +5,7 @@
         <h1>Teams from Restful API</h1>
       </v-col>
       <v-col cols="12">
-        <v-btn @click="getData()" class="dataBtn" id="getDataBtn">Get Data</v-btn>
+        <v-btn @click="getData()" class="dataBtn" id="getDataBtn">Get Teams</v-btn>
       </v-col>
       <v-col cols="4" v-for="(item, i) in teams" :key="i">
         <v-card class="mx-auto" max-width="350">

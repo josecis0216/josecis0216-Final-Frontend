@@ -37,7 +37,7 @@
           v-if="alert"
           v-model="alert"
           dismissible
-          type="error">
+          type="success">
             Successfully deleted player, refresh page. 
       </v-alert>
       <!-- No result -->
