@@ -10,11 +10,12 @@
       <v-col cols="4" v-for="(item, i) in teams" :key="i">
         <v-card class="mx-auto" max-width="350">
           <v-card-text>
-            <div>{{ item.name }}</div>
-            <div>{{ item.trophies }}</div>
+            <v-card-title primary-title><h3>{{ item.name }}</h3></v-card-title>
+            <v-card-title><h5>Trophies: {{ item.trophies }}</h5></v-card-title>
+            <div><img :src="item.image" style="width: 250px; height: 200px;"></div>
           </v-card-text>
           <v-card-actions>
-            <v-btn color="cyan" fab small dark @click="editTeam(item._id)"><v-icon dark>{{ icons.mdiPencil }}</v-icon></v-btn>
+            <v-btn color="cyan" fab small dark @click="editTeam(item)"><v-icon dark>{{ icons.mdiPencil }}</v-icon></v-btn>
             <v-btn color="error"  fab small dark @click="deleteTeam(item, item._id)"><v-icon dark>{{ icons.mdiDelete }}</v-icon></v-btn>
           </v-card-actions>
         </v-card>
@@ -27,6 +28,7 @@
           <v-card-text>
             <div>{{ team.name }}</div>
             <div>{{ team.trophies }}</div>
+            <div><img :src="team.image" style="width: 250px; height: 200px;"></div>
           </v-card-text>
         </v-card>
       </v-col>
@@ -52,9 +54,22 @@ export default {
     mdiDelete,
     },
     teams: [],
-    team: ""
+    team: "",
   }),
   methods: {
+    createTeam() {
+        this.axios.post('http://localhost:8000/player/postFavTeam', {
+            name: this.team.name,
+            trophies: this.team.trophies,
+            image: this.team.image
+            })
+            .then(function (response) {
+                this.output = response.data;
+            })
+            .catch(function (error) {
+                this.output = error;
+            });
+    },
     getData() {
       return axios
         .get("http://localhost:8000/player/teams")
@@ -67,7 +82,7 @@ export default {
     },
     getFavTeam() {
       return axios
-        .get("http://localhost:8000/player/favTeam/5e548c021ee0b00017dc03ea")
+        .get("http://localhost:8000/player/favTeam/5ea5de250bb9151f6ce381bb")
         .then(response => {
           console.log(response);
           this.team = response.data.team;
@@ -76,15 +91,21 @@ export default {
         .catch(error => console.log(error));
     },
     editTeam(team) {
-        return console.log(team)
+        console.log(team)
+        this.$store.dispatch('editTeam', team)
+        this.$router.push('/editTeam')
     },
     deleteTeam(teams, id) {
-        axios.delete('http://localhost:8000/player/' + id)
+        axios.delete('http://localhost:8000/player/team/' +id)
         .then(response => {
-            this.teams.splice(teams, 1)
+            this.teams.splice(id, 1)
             console.log(response)
         })
         .catch(error => console.log(error));
+    },
+    returnHome() {
+      console.log("Going home");
+      this.$router.push("/");
     }
   }
 };

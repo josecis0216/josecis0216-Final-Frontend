@@ -8,7 +8,7 @@
     <div>
         <router-link class="routerLink" to="/">Home</router-link><span class="routerLink"> | </span>
         <router-link class="routerLink" to="/teams">Teams</router-link><span class="routerLink"> | </span>
-        <!-- <router-link class="routerLink" to="/player">Player</router-link><span class="routerLink"> | </span> -->
+        <router-link class="routerLink" to="/newTeam">Create Team</router-link><span class="routerLink"> | </span>
         <router-link class="routerLink" to="/admin">Admin</router-link><span class="routerLink"> | </span> 
         <router-link class="routerLink" to="/add-player">Add-Player</router-link>
       </div>
