@@ -42,6 +42,13 @@
           </v-row>
           <v-btn large color="secondary" :disabled="loading" @click="returnHome">Cancel</v-btn>
           <v-btn large color="primary" :disabled="loading" @click="mutate()">Save</v-btn>
+          <v-alert
+          v-if="alert"
+          v-model="alert"
+          dismissible
+          type="success">
+            Successfully made changes to player
+          </v-alert>
           <p v-if="error">An error occurred: {{ error }}</p>
         </v-container>
       </v-form>
@@ -59,12 +66,14 @@ export default {
       dob: this.$store.getters.currentEditablePlayer.dob,
       nationality: this.$store.getters.currentEditablePlayer.nationality,
       currentTeam: this.$store.getters.currentEditablePlayer.currentTeam,
-      jerseyNumber: this.$store.getters.currentEditablePlayer.jerseyNumber
+      jerseyNumber: this.$store.getters.currentEditablePlayer.jerseyNumber,
+      alert: false,
     };
   },
   methods: {
     onDone() {
-      return console.log("Done");
+      console.log("Done");
+      this.alert = true;
     },
     returnHome() {
       console.log("Going home");

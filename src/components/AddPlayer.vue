@@ -38,12 +38,16 @@
             <v-col cols="12" md="2">
               <v-text-field v-model="currentTeam" filled label="Current Club"></v-text-field>
             </v-col>
-            <!-- <v-col cols="12" md="5">
-          <v-select :items="jerseyNumber" v-model="termsOffered" filled multiple label="Player Club Jersey Number"></v-select>
-            </v-col>-->
           </v-row>
           <v-btn large color="secondary" :disabled="loading" @click="returnHome">Cancel</v-btn>
           <v-btn large color="primary" :disabled="loading" @click="mutate()">Add Player</v-btn>
+          <v-alert
+          v-if="alert"
+          v-model="alert"
+          dismissible
+          type="success">
+            Successfully created Player
+          </v-alert>
           <p v-if="error">An error occurred: {{ error }}</p>
         </v-container>
       </v-form>
@@ -60,12 +64,14 @@
                 dob: '',
                 nationality: '',
                 currentTeam: '',
-                jerseyNumber: ''
+                jerseyNumber: '',
+                alert: false,
             }
         },
         methods: {
             onDone() {
-                return console.log('Done')
+                console.log('Done')
+                this.alert = true;
             },
             returnHome() {
                 console.log('Going Home')
@@ -74,29 +80,4 @@
         }
     }
 </script>
-//<script>
-// export default {
-//   data: function() {
-//     return {
-//       id: this.$store.getters.currentEditablePlayer.id,
-//       name: this.$store.getters.currentEditablePlayer.name,
-//       position: this.$store.getters.currentEditablePlayer.position,
-//       dob: this.$store.getters.currentEditablePlayer.dob,
-//       nationality: this.$store.getters.currentEditablePlayer.nationality,
-//       currentTeam: this.$store.getters.currentEditablePlayer.currentTeam,
-//       jerseyNumber: this.$store.getters.currentEditablePlayer.jerseyNumber
-//     };
-//   },
-//   methods: {
-//     onDone() {
-//       return console.log("Done");
-//     },
-//     returnHome() {
-//       console.log("Going home");
-//       this.$router.push("/");
-//     }
-//   }
-// };
-// // id,
-// </script>
 

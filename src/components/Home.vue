@@ -14,26 +14,32 @@
           <v-col cols="4" v-for="(item, i) in data.Players" :key="i">
             <v-card class="mx-auto" max-width="350">
               <v-card-text>
-                <div>{{ item.name }}</div>
-                <p class="courseName">{{ item.jerseyNumber }}</p>
+                <v-card-title><h3>{{ item.name }}</h3></v-card-title>
+                <p class="jerseyNumber">{{ item.jerseyNumber }}</p>
                 <p>{{ item.position }}</p>
                 <div class="text--primary">
-                  {{ item.nationality | truncate(200) }}
+                  Nationality: {{ item.nationality}}
                   <br />
                   {{ item.dob }}
                   <br />
-                  {{ item.currentTeam }}
+                  Club: {{ item.currentTeam }}
                 </div>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="cyan" fab small dark @click="editTeam(item)"><v-icon dark>{{ icons.mdiPencil }}</v-icon></v-btn>
-                <v-btn color="error"  fab small dark @click="deleteTeam(item)"><v-icon dark>{{ icons.mdiDelete }}</v-icon></v-btn>
+                <v-btn color="cyan" fab small dark @click="editPlayer(item)"><v-icon dark>{{ icons.mdiPencil }}</v-icon></v-btn>
+                <v-btn color="error"  fab small dark @click="deletePlayer(item)"><v-icon dark>{{ icons.mdiDelete }}</v-icon></v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
       </div>
-
+      <v-alert
+          v-if="alert"
+          v-model="alert"
+          dismissible
+          type="error">
+            Successfully deleted player, refresh page. 
+      </v-alert>
       <!-- No result -->
       <div v-else class="no-result apollo">No result :(</div>
     </template>
@@ -68,12 +74,13 @@ export default {
     mdiShareVariant,
     mdiDelete,
     },
-    searchString: "Roma"
+    searchString: "Roma",
+    alert: false,
   }),
   methods: {
     editPlayer(player) {
       this.$store.dispatch("editPlayer", player);
-      this.$router.push("admin");
+      this.$router.push("/admin");
     },
     deletePlayer: function(player) {
     // delete player from db
@@ -83,6 +90,7 @@ export default {
         id: player.id,
         }
       });
+      this.alert = true;
     }
   }
 };
@@ -93,7 +101,7 @@ export default {
   padding: 1rem;
 }
 
-.courseName {
+.jerseyNumber {
   font-size: 1.25rem;
   font-weight: 600;
 }
